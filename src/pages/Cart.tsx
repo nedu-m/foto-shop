@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import "../styles/Cart.scss";
 
-//build cart function and display images in cart
+
 function Cart() {
   //get cartItems from context
   const { cartItems, allImages } = useContext(AppContext);

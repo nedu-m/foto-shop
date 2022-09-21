@@ -42,7 +42,6 @@ function AppProvider({ children }: AppContextProviderProps) {
     });
   }
 
-  //write addToCart function and add images to cart
   function addToCart(newItem: string) {
     setCartItems((prevItems) => {
       //check if item is already in cart
@@ -56,12 +55,7 @@ function AppProvider({ children }: AppContextProviderProps) {
     });
   }
 
-  console.log(cartItems);
-
-  /*
-  fetch images from api https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json
-  and set them to allImages state
- */
+  //fetch images from api and set them to allImages state
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"

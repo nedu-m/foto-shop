@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { IconContext } from "react-icons/lib";
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import { BsFillCartCheckFill, BsCartPlusFill } from "react-icons/bs";
+
 import "./Image.scss";
 
 type ImageProps = {
@@ -10,14 +14,33 @@ type ImageProps = {
 
 const Image = ({ id, url, alt }: ImageProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
   };
 
-  //console log id on toggle
   return (
-    <div className="image" key={id} onClick={toggleFavorite}>
+    <div className="image">
+      <IconContext.Provider value={{ size: "2em", color: "#4db838" }}>
+        <div className="image__header">
+          <div className="image__header__favorite">
+            {isFavorite ? (
+              <FcLike onClick={toggleFavorite} />
+            ) : (
+              <FcLikePlaceholder onClick={toggleFavorite} />
+            )}
+          </div>
+          <div className="image__header__cart">
+            {isInCart ? (
+              <BsFillCartCheckFill onClick={() => setIsInCart(!isInCart)} />
+            ) : (
+              <BsCartPlusFill onClick={() => setIsInCart(!isInCart)} />
+            )}
+          </div>
+        </div>
+      </IconContext.Provider>
+
       <img src={url} alt={alt} />
     </div>
   );

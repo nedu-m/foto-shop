@@ -18,6 +18,7 @@ const Image = ({ id, url, alt }: ImageProps) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
+  //toggle favorite
   function handleClick() {
     setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     toggleFavorite(id);

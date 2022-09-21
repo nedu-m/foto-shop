@@ -11,10 +11,13 @@ function AppProvider({ children }: { children: React.ReactNode }) {
 
   function toggleFavorite(imageId: string) {
     setAllImages((prevImages: any) => {
+      //find image
       const updatedImages = prevImages.map((image: any) => {
+        //if image is found, toggle favorite
         if (image.id === imageId) {
           console.log(imageId);
           console.log(!image.isFavorite);
+          //return new image with updated favorite
           return { ...image, isFavorite: !image.isFavorite };
         }
         return image;

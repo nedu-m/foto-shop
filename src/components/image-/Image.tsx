@@ -14,9 +14,10 @@ type ImageProps = {
 };
 
 const Image = ({ id, url, alt }: ImageProps) => {
-  const { toggleFavorite } = useContext(AppContext);
+  const { toggleFavorite, addToCart } = useContext(AppContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [inCart, setInCart] = useState(false);
 
   //toggle favorite
   function handleClick() {
@@ -24,15 +25,33 @@ const Image = ({ id, url, alt }: ImageProps) => {
     toggleFavorite(id);
   }
 
+  //toggle cart
+  function handleCartClick() {
+    setInCart((prevInCart) => !prevInCart);
+    addToCart(id);
+  }
+
   return (
     <div className="image">
       <IconContext.Provider value={{ size: "2em", color: "#4db838" }}>
         <div className="image__header">
-          {isFavorite ? (
-            <FcLike onClick={handleClick} />
-          ) : (
-            <FcLikePlaceholder onClick={handleClick} />
-          )}
+          <div className="image__header__favorite">
+            {/*if image is favorite, show filled heart icon, else show empty heart icon*/}
+            {isFavorite ? (
+              <FcLike onClick={handleClick} />
+            ) : (
+              <FcLikePlaceholder onClick={handleClick} />
+            )}
+          </div>
+
+          <div className="image__header__cart">
+            {/*if image is in cart, show filled cart icon, else show empty cart icon*/}
+            {inCart ? (
+              <BsFillCartCheckFill onClick={handleCartClick} />
+            ) : (
+              <BsCartPlusFill onClick={handleCartClick} />
+            )}
+          </div>
         </div>
       </IconContext.Provider>
 

@@ -1,0 +1,10 @@
+//write an image grid that will display 3 images in a row on desktop and 2 images in a row on mobile
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

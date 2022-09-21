@@ -1,0 +1,22 @@
+:root {
+  --orange: #ff5100;
+  --white: #fff;
+}
+
+.header {
+  background-color: var(--orange);
+  color: var(--white);
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+}

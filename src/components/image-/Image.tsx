@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 import { IconContext } from "react-icons/lib";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { BsFillCartCheckFill, BsCartPlusFill } from "react-icons/bs";

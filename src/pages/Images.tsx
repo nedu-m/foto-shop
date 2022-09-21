@@ -1,6 +1,5 @@
-//get allImages from context and map over them
 import { AppContext } from "../context/AppContext";
-// import Image from "../components/image/Image";
+import Image from "../components/image-/Image";
 import { useContext } from "react";
 import "../styles/Pages/Images.scss";
 
@@ -12,17 +11,15 @@ type Image = {
 };
 
 //set images to allImages from context
-const Images = () => {
+function Images() {
   const { allImages } = useContext(AppContext);
   return (
-    <div className="images">
+    <div className="image-grid">
       {allImages.map((image: Image) => (
-        <div className="image" key={image.id}>
-          <img src={image.url} alt={image.name} />
-        </div>
+        <Image key={image.id} id={image.id} url={image.url} alt={image.name} />
       ))}
     </div>
   );
-};
+}
 
 export default Images;

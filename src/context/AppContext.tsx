@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 //create context
 const AppContext = createContext({
   allImages: [],
-  setAllImages: () => {},
+  // setAllImages: () => {},
 });
 
 function AppProvider({ children }: { children: React.ReactNode }) {
@@ -21,12 +21,8 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       .then((data) => setAllImages(data));
   }, []);
 
-  console.log(allImages);
-
   return (
-    <AppContext.Provider value={{ allImages, setAllImages }}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={{ allImages }}>{children}</AppContext.Provider>
   );
 }
 

@@ -8,17 +8,28 @@ type Image = {
   id: number;
   name: string;
   url: string;
+  isFavorite: boolean;
 };
 
-//set images to allImages from context
 function Images() {
+  //get images from context
   const { allImages } = useContext(AppContext);
+
   return (
-    <div className="image-grid">
-      {allImages.map((image: Image) => (
-        <Image key={image.id} id={image.id} url={image.url} alt={image.name} />
-      ))}
-    </div>
+    <>
+      <div className="image-grid">
+        {/* map images and pass the Image type */}
+        {allImages.map((image: Image) => (
+          <Image
+            key={image.id}
+            id={image.id}
+            url={image.url}
+            alt={image.name}
+            isFavorite={image.isFavorite}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 

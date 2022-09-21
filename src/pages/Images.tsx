@@ -5,7 +5,7 @@ import "../styles/Pages/Images.scss";
 
 //set image type
 type Image = {
-  id: number;
+  id: string;
   name: string;
   url: string;
   isFavorite: boolean;

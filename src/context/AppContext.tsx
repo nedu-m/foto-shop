@@ -14,7 +14,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       const updatedImages = prevImages.map((image: any) => {
         if (image.id === imageId) {
           console.log(imageId);
-          console.log(image.isFavorite);
+          console.log(!image.isFavorite);
           return { ...image, isFavorite: !image.isFavorite };
         }
         return image;

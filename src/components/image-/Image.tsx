@@ -7,38 +7,31 @@ import { BsFillCartCheckFill, BsCartPlusFill } from "react-icons/bs";
 import "./Image.scss";
 
 type ImageProps = {
-  id: number;
+  id: string;
   url: string;
   alt: string;
   isFavorite?: boolean;
 };
 
 const Image = ({ id, url, alt }: ImageProps) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  const { toggleFavorite } = useContext(AppContext);
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  function handleClick() {
+    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
+    toggleFavorite(id);
+  }
 
   return (
     <div className="image">
       <IconContext.Provider value={{ size: "2em", color: "#4db838" }}>
         <div className="image__header">
-          <div className="image__header__favorite">
-            {isFavorite ? (
-              <FcLike onClick={toggleFavorite} />
-            ) : (
-              <FcLikePlaceholder onClick={toggleFavorite} />
-            )}
-          </div>
-          <div className="image__header__cart">
-            {isInCart ? (
-              <BsFillCartCheckFill onClick={() => setIsInCart(!isInCart)} />
-            ) : (
-              <BsCartPlusFill onClick={() => setIsInCart(!isInCart)} />
-            )}
-          </div>
+          {isFavorite ? (
+            <FcLike onClick={handleClick} />
+          ) : (
+            <FcLikePlaceholder onClick={handleClick} />
+          )}
         </div>
       </IconContext.Provider>
 

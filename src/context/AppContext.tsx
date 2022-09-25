@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
-//create app content and set the types
+//create app context and set the types
 const AppContext = createContext<AppContextType>({
   allImages: [],
   toggleFavorite: (imageId: string) => {},
